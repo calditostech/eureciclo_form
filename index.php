@@ -54,19 +54,16 @@ include_once("conexao.php");
 				$resultado_usuario = mysqli_query($conn, $result_usuario);
 				
 				//Usar o while para percorrer os dados trazidos do banco de dados
-				while($row_vendas = mysqli_fetch_assoc($resultado_usuario)){
-				?>
-				<td><?php echo $row_vendas['comprador']; ?></td>
-				<td><?php echo $row_vendas['descricao']; ?></td>
-				<td><?php echo $row_vendas['preco']; ?></td>
-				<td><?php echo $row_vendas['quantidade']; ?></td>
-				<td><?php echo $row_vendas['endereco']; ?></td>
-				<td><?php echo $row_vendas['fornecedor']; ?></td>
-				<?php
-				  }
-				?>
+				foreach($resultado_usuario as $vendas): ?>
+				<td><?php echo $vendas['comprador']; ?></td>
+				<td><?php echo $vendas['descricao']; ?></td>
+				<td><?php echo $vendas['preco']; ?></td>
+				<td><?php echo $vendas['quantidade']; ?></td>
+				<td><?php echo $vendas['endereco']; ?></td>
+				<td><?php echo $vendas['fornecedor']; ?></td>
 				</tr>
 			</tbody>
+			<?php endforeach; ?>
        </table>
 	</body>
 </html>
